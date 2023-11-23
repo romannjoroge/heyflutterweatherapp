@@ -4,13 +4,12 @@ import 'package:hey_flutter_weather_app/helpers/weather_conditions.dart';
 import 'package:hey_flutter_weather_app/screens/home/widgets/date_and_last_updated.dart';
 import 'package:hey_flutter_weather_app/screens/home/widgets/location_name_and_dropdown.dart';
 import 'package:hey_flutter_weather_app/screens/home/widgets/weather_description.dart';
+import 'package:hey_flutter_weather_app/screens/home/widgets/weather_statistics.dart';
 
 class Home extends StatelessWidget {
   final City selectedCity;
 
-  const Home({
-    required this.selectedCity,
-    super.key});
+  const Home({required this.selectedCity, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,33 +19,39 @@ class Home extends StatelessWidget {
     return Stack(
       children: [
         // Image of City
-        Image.asset(
-            getImage(City.paris),
+        ColorFiltered(
+          colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.modulate),
+          child: Image.asset(
+            getImage(selectedCity),
             width: screenWidth,
             height: screenHeight,
-            fit: BoxFit.fill
+            fit: BoxFit.fill,
+          ),
         ),
         // Name of city
         Positioned(
           top: 50,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: SizedBox(
-              height: screenHeight * 9 / 10,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  LocationAndDropDown(locationName: getCityName(selectedCity)),
-                  const SizedBox(height: 50),
-                  CurrentDateAndLastUpdated(lastUpdated: DateTime.now(),),
-                  const SizedBox(height: 50),
-                  const WeatherConditionWidget(condition: WeatherCondition.clear, temperature: 24.0),
-                  const SizedBox(height: 50),
-
-                ],
-              ),
-            )
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: SizedBox(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    LocationAndDropDown(
+                        locationName: getCityName(selectedCity)),
+                    const SizedBox(height: 50),
+                    CurrentDateAndLastUpdated(
+                      lastUpdated: DateTime.now(),
+                    ),
+                    const SizedBox(height: 50),
+                    const WeatherConditionWidget(
+                        condition: WeatherCondition.clear, temperature: 24.0),
+                    const SizedBox(height: 50),
+                    const WeatherStatisticsWidget(
+                        humidity: 56, wind: 4.63, temp: 22),
+                  ],
+                ),
+              )),
         )
       ],
     );
