@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hey_flutter_weather_app/helpers/city_data.dart';
+import 'package:hey_flutter_weather_app/screens/home/widgets/date_and_last_updated.dart';
+import 'package:hey_flutter_weather_app/screens/home/widgets/location_name_and_dropdown.dart';
 
 class Home extends StatelessWidget {
   final City selectedCity;
@@ -10,30 +12,34 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
+
     return Stack(
       children: [
         // Image of City
         Image.asset(
             getImage(City.paris),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: screenWidth,
+            height: screenHeight,
             fit: BoxFit.fill
         ),
         // Name of city
         Positioned(
-          top: 30,
-          left: 30,
-          child: Row(
-            children: [
-              const Icon(Icons.access_alarm, color: Colors.white,),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  getCityName(selectedCity),
-                  style: const TextStyle(color: Colors.white, fontSize: 16.0),
-                )
-              )
-            ],
+          top: screenHeight / 10,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: SizedBox(
+              height: screenHeight * 9 / 10,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  LocationAndDropDown(locationName: getCityName(selectedCity)),
+                  SizedBox(height: screenHeight / 12,),
+                  CurrentDateAndLastUpdated(lastUpdated: DateTime.now(),)
+                ],
+              ),
+            )
           ),
         )
       ],
