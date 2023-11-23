@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hey_flutter_weather_app/helpers/city_data.dart';
+import 'package:hey_flutter_weather_app/screens/home/home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: Placeholder()
+        body: Home(selectedCity: City.paris,)
       )
     );
   }
