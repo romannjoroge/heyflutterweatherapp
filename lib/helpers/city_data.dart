@@ -43,21 +43,21 @@ String getImage(City city) {
     case City.paris:
       return "assets/images/paris.png";
     case City.dubai:
-      return "Dubai";
+      return "assets/images/dubai.png";
     case City.bangkok:
-      return "Bangkok";
+      return "assets/images/bangkok.png";
     case City.barcelona:
-      return "Barcelona";
+      return "assets/images/barcelona.png";
     case City.rome:
-      return "Rome";
+      return "assets/images/rome.png";
     case City.newYork:
-      return "New York";
+      return "assets/images/newyork.png";
     case City.beijing:
-      return "Beijing";
+      return "assets/images/beijing.png";
     case City.london:
-      return "London";
+      return "assets/images/london.png";
     case City.minsk:
-      return "Minsk";
+      return "assets/images/minsk.png";
     default:
       throw "Unsupported City";
   };
