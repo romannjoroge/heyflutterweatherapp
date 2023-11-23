@@ -13,7 +13,12 @@ class Home extends StatelessWidget {
     return Stack(
       children: [
         // Image of City
-        Image.asset(getImage(City.paris)),
+        Image.asset(
+            getImage(City.paris),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.fill
+        ),
         // Name of city
         Positioned(
           top: 30,
@@ -25,7 +30,7 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
                   getCityName(selectedCity),
-                  style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  style: const TextStyle(color: Colors.white, fontSize: 16.0),
                 )
               )
             ],
