@@ -37,7 +37,7 @@ Future<DateTime> getLastUpdated() async{
 
 // The weather API requires dates to be passed as strings with the format yyyy-mm-dd
 String formatDateToWeatherAPIStandard(DateTime date) {
-  var dateFormatter = DateFormat('yyyy-mm-dd');
+  var dateFormatter = DateFormat('yyyy-MM-dd');
   return dateFormatter.format(date);
 }
 
