@@ -48,3 +48,23 @@ String getWeatherConditionIcon(WeatherCondition condition) {
       throw "Unsupported Weather Condition";
   }
 }
+
+// Get the file location of the svg to show for the next days weather
+String getNextDayWeatherConditionIcon(WeatherCondition condition) {
+  switch (condition) {
+    case WeatherCondition.clear:
+      return "assets/svgs/sunny-mini-display.svg";
+    case WeatherCondition.clouds:
+      return "assets/svgs/cloudy-svgrepo-com.svg";
+    case WeatherCondition.mist:
+      return "assets/svgs/waves-svgrepo-com.svg";
+    case WeatherCondition.sunWithClouds:
+      return "assets/svgs/partial-cloudy-mini.svg";
+    case WeatherCondition.haze:
+      return "assets/svgs/hazy-svgrepo-com.svg";
+    case WeatherCondition.thunderstorm:
+      return "assets/svgs/rainy-mini.svg";
+    default:
+      throw "Unsupported Weather Condition";
+  }
+}
