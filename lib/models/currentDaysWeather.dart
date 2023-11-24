@@ -1,4 +1,5 @@
 import 'package:hey_flutter_weather_app/helpers/dates.dart';
+import 'package:hey_flutter_weather_app/helpers/temperature.dart';
 import 'package:hey_flutter_weather_app/helpers/weather_conditions.dart';
 
 // An object that will hold the following details from the APIs response
@@ -19,7 +20,8 @@ class CurrentDaysWeather {
     try {
       var lastUpdated = await getLastUpdated();
       var condition = parseConditionFromDescription(json['conditions'] ?? 'clear');
-      var temperature = json['temp'];
+      // Temperature comes as farenheight and needs to be converted
+      var temperature = convertFarenheitToCelcius(json['temp']);
       return CurrentDaysWeather(lastUpdated: lastUpdated, condition: condition, temperature: temperature);
     } catch(err) {
       throw "Could Not Get Current Weather";
