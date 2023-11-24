@@ -27,11 +27,17 @@ class NextDaysWeatherWidget extends StatelessWidget {
         color: const Color.fromRGBO(83, 83, 83, 0.6),
         borderRadius: BorderRadius.circular(24)
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IndividualNextDayWeatherWidget(daysData: day1Weather),
+            IndividualNextDayWeatherWidget(daysData: day2Weather),
+            IndividualNextDayWeatherWidget(daysData: day3Weather),
+            IndividualNextDayWeatherWidget(daysData: day4Weather),
+          ],
+        ),
       )
     );
   }
@@ -52,7 +58,7 @@ class IndividualNextDayWeatherWidget extends StatelessWidget {
       children: [
         // Date
         Text(
-          getMonthDateStringFromDate(daysData.date),
+          getWeekdayAndDay(daysData.date),
           style: const TextStyle(
             color: Colors.white,
             fontSize: 14,
@@ -75,6 +81,7 @@ class IndividualNextDayWeatherWidget extends StatelessWidget {
               fontWeight: FontWeight.w400
           ),
         ),
+        const SizedBox(height: 5,),
         // Wind speed
         Text(
           '${daysData.bottomWindSpeed}-${daysData.topWindSpeed}',
