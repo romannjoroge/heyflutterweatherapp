@@ -37,6 +37,32 @@ String getCityName(City city) {
   }
 }
 
+// Gets the address of the city that we use to get the locations data
+String getAddressFromCity(City city) {
+  switch (city) {
+    case City.paris:
+      return "Paris, FR";
+    case City.dubai:
+      return "Dubai, AE";
+    case City.bangkok:
+      return "Bangkok, TH";
+    case City.barcelona:
+      return "Barcelona, ESP";
+    case City.rome:
+      return "Rome, IT";
+    case City.newYork:
+      return "New York, US";
+    case City.beijing:
+      return "Beijing, CN";
+    case City.london:
+      return "London, UK";
+    case City.minsk:
+      return "Minsk, BY";
+    default:
+      throw "Unsupported City";
+  }
+}
+
 // Returns the path to the image of the city
 String getImage(City city) {
   switch (city) {
