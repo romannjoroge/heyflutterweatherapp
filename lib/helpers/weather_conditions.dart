@@ -19,7 +19,7 @@ String getWeatherConditionName(WeatherCondition condition) {
     case WeatherCondition.mist:
       return "Mist";
     case WeatherCondition.sunWithClouds:
-      return "Clouds";
+      return "Partially Cloudy";
     case WeatherCondition.haze:
       return "Haze";
     case WeatherCondition.thunderstorm:
