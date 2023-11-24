@@ -68,3 +68,20 @@ String getNextDayWeatherConditionIcon(WeatherCondition condition) {
       throw "Unsupported Weather Condition";
   }
 }
+
+WeatherCondition parseConditionFromDescription(String description) {
+  var lowercaseDescription = description.toLowerCase();
+  if (lowercaseDescription.contains("clear conditions") == true || lowercaseDescription.contains('no rain') == true) {
+    return WeatherCondition.clear;
+  } else if (lowercaseDescription.contains("becoming cloudy") == true || lowercaseDescription.contains("cloud cover") == true || lowercaseDescription.contains('funnel') == true || lowercaseDescription.contains('cloudy skies') == true) {
+    return WeatherCondition.clouds;
+  } else if (lowercaseDescription.contains('dew') == true) {
+    return WeatherCondition.mist;
+  } else if (lowercaseDescription.contains('precipition') == true || lowercaseDescription.contains('rain') || lowercaseDescription.contains('storm') || lowercaseDescription.contains('thunderstorm')) {
+    return WeatherCondition.thunderstorm;
+  } else if (lowercaseDescription.contains('partial') == true) {
+    return WeatherCondition.sunWithClouds;
+  }else {
+    return WeatherCondition.clear;
+  }
+}
